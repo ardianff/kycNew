@@ -35,4 +35,20 @@ class Bridging
         $decrypt = json_decode(Master::SecurityDecode($response['data']), true);
         return $decrypt['access_token'];
     }
+    public static function kirimUrlKyc($payload, $token, $url)
+    {
+        $client = new Client();
+        $options = [
+            'headers' => [
+                'X-Debug-Mode' => '0',
+                'Content-Type' => 'text/plain',
+                'Authorization' => 'Bearer ' . $token
+            ],
+            'body' => $payload
+        ];
+
+        $response = $client->post($url, $options);
+
+        return $response->getBody()->getContents();
+    }
 }
