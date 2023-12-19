@@ -21,5 +21,6 @@ class HomeController extends Controller
     public function index()
     {
         $json = Modul::generateUrl('Ardian Ferdy Firmansyah', '3374102302990001', $this->auth(), 'https://api-satusehat.kemkes.go.id/kyc/v1/generate-url', 'production');
+        dd($json);
     }
 }
