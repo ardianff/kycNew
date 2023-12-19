@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('prose', 'HomeController@index')->name('kyc.proses');
+Route::get('proses', 'HomeController@index')->name('kyc.proses');
