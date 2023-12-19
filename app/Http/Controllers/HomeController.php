@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function auth()
     {
         // $key = json_decode((file_get_contents('http://' . $_SERVER['HTTP_HOST'] . '/satu-sehat/key')), true);
-        $key = json_decode((file_get_contents('http://192.168.25.2/satu-sehat/key')), true);
+        $key = json_decode((file_get_contents('http://119.2.50.170:6535/satu-sehat/key')), true);
         $pusk = json_decode(Master::SecurityDecode($key['data']), true);
 
         $token = Bridging::GetTokenBaru($pusk['client'], $pusk['secret']);
@@ -21,9 +21,6 @@ class HomeController extends Controller
     public function index()
     {
         $json = Modul::generateUrl('Ardian Ferdy Firmansyah', '3374102302990001', $this->auth(), 'https://api-satusehat.kemkes.go.id/kyc/v1/generate-url', 'production');
-        return view(
-            'kyc',
-            ['url' => json_decode($json, true)]
-        );
+        return view('kyc', ['url' => json_decode($json, true)]);
     }
 }

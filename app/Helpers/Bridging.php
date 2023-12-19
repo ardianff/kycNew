@@ -25,7 +25,7 @@ class Bridging
     public static function GetTokenBaru($client_key, $secret_key)
     {
         $client = new Client();
-        $request = $client->get('http://119.2.50.171/satu-sehat/token', [
+        $request = $client->get('http://192.168.80.249/satu-sehat/token', [
             'query' => [
                 'client_key' => $client_key,
                 'secret_key' => $secret_key
