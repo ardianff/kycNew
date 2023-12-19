@@ -228,6 +228,7 @@ class Modul
 
         // // Close cURL
         // curl_close($ch);
+        dd($encryptedPayload, $accessToken, $apiUrl);
         $response = Bridging::kirimUrlKyc($encryptedPayload, $accessToken, $apiUrl);
         dd($response);
 
