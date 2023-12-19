@@ -125,7 +125,7 @@ class Modul
     }
 
     //done php_sec_lib
-    function decryptMessage($message, $privateKey)
+    static function decryptMessage($message, $privateKey)
     {
         $beginTag = "-----BEGIN ENCRYPTED MESSAGE-----";
         $endTag = "-----END ENCRYPTED MESSAGE-----";
