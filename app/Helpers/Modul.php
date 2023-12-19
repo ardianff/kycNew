@@ -196,41 +196,9 @@ class Modul
         $jsonData = json_encode($data);
 
         $encryptedPayload = self::encryptMessage($jsonData, $pubPEM);
-        // dd($encryptedPayload);
 
-
-        // // Initialize cURL
-        // $ch = curl_init();
-
-        // // Set the cURL options
-        // curl_setopt($ch, CURLOPT_URL, $apiUrl);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_POST, true);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $encryptedPayload);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        //     'X-Debug-Mode: 0',
-        //     'Content-Type: text/plain',
-        //     'Authorization: Bearer ' . $accessToken
-        // ));
-
-        // // Execute the request
-        // $response = curl_exec($ch);
-        // var_dump($encryptedPayload);
-        // // print_r($apiUrl);
-        // // print_r($accessToken);
-        // print_r($response);
-        // die();
-
-        // // Check for cURL errors
-        // if (curl_errno($ch)) {
-        //     echo 'cURL error: ' . curl_error($ch);
-        // }
-
-        // // Close cURL
-        // curl_close($ch);
-        // dd($encryptedPayload, $accessToken, $apiUrl);
         $response = Bridging::kirimUrlKyc($encryptedPayload, $accessToken, $apiUrl);
-        dd($response);
+        // dd($response);
 
         // Output the response
         return self::decryptMessage($response, $privateKey);
