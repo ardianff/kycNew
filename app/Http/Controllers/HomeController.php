@@ -59,7 +59,15 @@ class HomeController extends Controller
             return response()->json($response, 400);
         } else {
             $json = Modul::generateUrl($request->nama, $request->nik, Bridging::Token(), 'https://api-satusehat.kemkes.go.id/kyc/v1/generate-url', 'production');
-            return view('kyc', ['url' => json_decode($json, true)]);
+            $resp = json_decode($json, true);
+            return response()->json(
+                [
+                    'status' => true,
+                    'message' => 'Got URL Verification',
+                    'url' => Master::SecurityEncoding($resp['data']['url'])
+                ]
+            );
+            // return view('kyc', ['url' => json_decode($json, true)]);
         }
     }
 }
