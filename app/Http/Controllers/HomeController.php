@@ -34,7 +34,7 @@ class HomeController extends Controller
                 // var_dump($key);
                 $pusk = json_decode(Master::SecurityDecode($key['data']), true);
 
-                $token = Bridging::GetTokenBaru($pusk['client'], $pusk['secret']);
+                $token = Bridging::Token($pusk['client'], $pusk['secret']);
                 return $token;
             } else {
                 // Tangani jika permintaan tidak berhasil
