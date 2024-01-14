@@ -12,7 +12,7 @@ use Modul;
 
 class HomeController extends Controller
 {
-    public function auth()
+    public function auth_old()
     {
         // $key = json_decode((file_get_contents('http://' . $_SERVER['HTTP_HOST'] . '/satu-sehat/key')), true);
         // $key = json_decode((file_get_contents('http://119.2.50.170:6535/satu-sehat/key')), true);
@@ -58,7 +58,7 @@ class HomeController extends Controller
             $response['message']  = $error;
             return response()->json($response, 400);
         } else {
-            $json = Modul::generateUrl($request->nama, $request->nik, $this->auth(), 'https://api-satusehat.kemkes.go.id/kyc/v1/generate-url', 'production');
+            $json = Modul::generateUrl($request->nama, $request->nik, Bridging::Token(), 'https://api-satusehat.kemkes.go.id/kyc/v1/generate-url', 'production');
             return view('kyc', ['url' => json_decode($json, true)]);
         }
     }
